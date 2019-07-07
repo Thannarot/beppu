@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeMapModel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>mapinfo-model</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+  leaflet
+  style="height: 100%"
+  [leafletLayers]="layers"
+  [leafletOptions]="options"
+  (leafletMapReady)="onMapReady($event)"
+></div>
+</ion-content>
