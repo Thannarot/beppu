@@ -9,9 +9,9 @@ import * as L from "leaflet";
   styleUrls: ['./mapinfo-model.page.scss'],
 })
 export class MapinfoModelPage {
-  map: L.Map;
-  json;
-  options = {
+  public  map: L.Map;
+  public json;
+  public options = {
     layers: [
       L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
@@ -30,7 +30,7 @@ export class MapinfoModelPage {
   onMapReady(map: L.Map) {
     setTimeout(() => {
       map.invalidateSize();
-    }, 500);
+    }, 1000);
     this.http.get("https://pkgstore.datahub.io/examples/geojson-tutorial/example/data/db696b3bf628d9a273ca9907adcea5c9/example.geojson").subscribe((json: any) => {
       console.log(json);
       this.json = json;

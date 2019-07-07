@@ -7,9 +7,9 @@ import * as L from "leaflet";
   styleUrls: ['tab1.page.css']
 })
 export class Tab1Page {
-  map: L.Map;
-  json;
-  options = {
+  public  map: L.Map;
+  public  json;
+  public  options = {
     layers: [
       L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
