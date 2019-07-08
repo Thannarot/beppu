@@ -15,5 +15,9 @@
   style="height: 100%"
   [leafletOptions]="options"
   (leafletMapReady)="onMapReady($event)"
-></div>
+>
+<div style="margin-left:25%; width:50%; bottom: 30px; position: absolute; z-index:1000;">
+  <ion-button class="confirm-btn" expand="block"(click)="getMyLocation()">CONFIRM </ion-button>
+</div>
+</div>
 </ion-content>

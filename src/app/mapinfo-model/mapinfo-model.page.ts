@@ -14,12 +14,11 @@ export class MapinfoModelPage {
   public options = {
     layers: [
       L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
         attribution: ""
       })
     ],
-    zoom: 7,
-    center: L.latLng(47.482019, -1)
+    zoom: 15,
+    center: L.latLng(33.269184, 131.509363)
   };
 
   constructor(private http: HttpClient, private modelCtrl: ModalController) {}
@@ -28,13 +27,59 @@ export class MapinfoModelPage {
     await this.modelCtrl.dismiss();
   }
   onMapReady(map: L.Map) {
+
+    var markerIcon = new L.Icon({
+       iconSize: [25, 25],
+       iconAnchor: [12, 35],
+       shadowSize: [50, 25],
+	     shadowAnchor: [12, 35],
+       popupAnchor: [6, -30],
+       iconUrl: 'leaflet/marker-icon.png',
+       iconRetinaUrl: 'leaflet/marker-icon-2x.png',
+       shadowUrl: 'leaflet/marker-shadow.png'
+      });
+
     setTimeout(() => {
       map.invalidateSize();
     }, 1000);
-    this.http.get("https://pkgstore.datahub.io/examples/geojson-tutorial/example/data/db696b3bf628d9a273ca9907adcea5c9/example.geojson").subscribe((json: any) => {
+
+    this.http.get("https://bepputool.adpc.net/api/shelter/read.php").subscribe((json: any) => {
       console.log(json);
       this.json = json;
-      L.geoJSON(this.json).addTo(map);
+      L.geoJSON(this.json,{
+        pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: markerIcon});
+        },
+        onEachFeature: function (feature, layer) {
+          // layer.on({
+          //   'click': function (e) {
+          //     this.ShelterModelPage.presentModal();
+          //       }
+          //
+          // });
+          layer.bindPopup('Shelter name: ' + feature.properties.name);
+        }
+      }).addTo(map);
     });
+
+    this.http.get("https://bepputool.adpc.net/api/pwd/read.php").subscribe((json: any) => {
+      console.log(json);
+      this.json = json;
+      L.geoJSON(this.json,{
+        pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: markerIcon});
+        },
+        onEachFeature: function (feature, layer) {
+          // layer.on({
+          //   'click': function (e) {
+          //     this.ShelterModelPage.presentModal();
+          //       }
+          //
+          // });
+          layer.bindPopup('Person name: ' + feature.properties.name);
+        }
+      }).addTo(map);
+    });
+
   }
 }

@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'notify',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab4/tab4.module#Tab4PageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/map',
         pathMatch: 'full'
