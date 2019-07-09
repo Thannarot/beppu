@@ -3,11 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  { path: 'pwd-view', loadChildren: './tabs-pwd/tabs.module#TabsPageModule' },
   { path: 'register', loadChildren: './auth/register/register.module#RegisterPageModule' },
   { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'user-auth', loadChildren: './auth/user-auth/user-auth.module#UserAuthPageModule' },
-  { path: 'tab4', loadChildren: './tab4/tab4.module#Tab4PageModule' }
+  { path: 'request-view', loadChildren: './pwd-viewer/request-view/request-view.module#RequestViewPageModule' }
 ];
 @NgModule({
   imports: [
