@@ -1,5 +1,7 @@
 {
   "name": "ionic-beppu-tabs",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

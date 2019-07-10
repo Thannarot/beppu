@@ -174,25 +174,29 @@ map: Map;
         });
 
 
-        this.http.get("https://bepputool.adpc.net/api/pwd/read.php").subscribe((json: any) => {
-          console.log(json);
-          this.json = json;
-          L.geoJSON(this.json,{
-            pointToLayer: function(feature, latlng) {
-              return L.marker(latlng, {icon: pwdIcon});
-            },
-            onEachFeature: function (feature, layer) {
-              // layer.on({
-              //   'click': function (e) {
-              //     this.ShelterModelPage.presentModal();
-              //       }
-              //
-              // });
-              layer.bindPopup('Person name: ' + feature.properties.name);
-            }
-          }).addTo(this.map);
-        });
-
+        // this.http.get("https://bepputool.adpc.net/api/pwd/read.php").subscribe((json: any) => {
+        //   console.log(json);
+        //   this.json = json;
+        //   L.geoJSON(this.json,{
+        //     pointToLayer: function(feature, latlng) {
+        //       return L.marker(latlng, {icon: pwdIcon});
+        //     },
+        //     onEachFeature: function (feature, layer) {
+        //
+        //       layer.bindPopup('Person name: ' + feature.properties.name);
+        //     }
+        //   }).addTo(this.map);
+        // });
+        var yourLocationIcon = new L.Icon({
+               iconSize: [25, 25],
+               iconAnchor: [12, 35],
+               shadowSize: [50, 25],
+               shadowAnchor: [12, 35],
+               popupAnchor: [6, -30],
+               iconUrl: 'assets/icon/your-location.png'
+              });
+        L.marker([33.273073, 131.505804], {icon: yourLocationIcon}).addTo(this.map).bindPopup("Your Location");
+        
         this.http.get("https://bepputool.adpc.net/api/building/read.php").subscribe((json: any) => {
           console.log(json);
           this.json = json;
