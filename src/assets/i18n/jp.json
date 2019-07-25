@@ -1,0 +1,28 @@
+{
+    "English": "英語",
+    "Japanese": "日本人",
+    "HOME": {
+      "Home": "ホームページ",
+      "Beppu": "Beppu",
+      "PWD Emergency Support System": "障害者の災害・緊急避難意志決定支援システム",
+      "PWD Emergancy Support Tool": "災害・緊急避難意志決定支援システム",
+      "Flood Preparedness in Beppu city": "",
+      "Login": "ログイン",
+      "Register": "登録"
+    },
+    "MAP": {
+      "Map Viewer": "地図",
+      "Map": "地図",
+      "Your Location": "あなたの場所"
+    },
+    "NOTIFY": {
+      "Notify": "知らせる"
+
+    },
+    "SHELTER": {
+      "Shelter": "シェルター"
+    },
+    "ACCOUNT": {
+      "Account": "アカウント"
+    }
+}

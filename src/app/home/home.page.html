@@ -1,16 +1,26 @@
 <ion-content>
   <ion-card class="home-card">
     <ion-card-header>
-      <ion-card-title>BEPPU</ion-card-title>
+      <ion-card-title>{{ 'HOME.Beppu' | translate }}</ion-card-title>
       <ion-card-subtitle>Mockup BEPPU App</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
       <img src="./assets/img/Disability-Animation.png" />
-      PWD Emergency Support System Flood Preparedness in Beppu city<br>
-      <ion-button fill="outline" expand="block" [routerLink]="['/login']">LOGIN</ion-button>
-      <ion-button expand="block" [routerLink]="['/user-auth']">REGISTER</ion-button>
+      {{ 'HOME.PWD Emergency Support System' | translate }} {{ 'HOME.Flood Preparedness in Beppu city' | translate }}<br>
+      <ion-button fill="outline" expand="block" [routerLink]="['/login']">{{ 'HOME.Login' | translate }}</ion-button>
+      <ion-button expand="block" [routerLink]="['/user-auth']">{{ 'HOME.Register' | translate }}</ion-button>
+      <ion-list>
+        <ion-item>
+          <ion-select  slot="end" padding [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+            <ion-select-option value="en">{{ 'English' | translate }}</ion-select-option>
+            <ion-select-option value="jp">{{ 'Japanese' | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
+
+
 
 </ion-content>

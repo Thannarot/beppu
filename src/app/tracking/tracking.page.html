@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeTrackingModel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Tracking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="mapId" style="width: 100%; height: 100%"></div>
+  <!-- fab placed to the top start -->
+  <!-- fab placed to the bottom start -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-button color="light" (click)="showToolKit();">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>Info</ion-label>
+      </ion-button>
+    </ion-fab>
+
+    <!-- <ion-fab horizontal="center" vertical="bottom" slot="fixed">
+      <ion-button color="dark" (click)="showToolKit();">
+        <ion-label>PICK UP</ion-label>
+      </ion-button>
+    </ion-fab> -->
+
+    <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+      <ion-button color="light">
+        <ion-icon name="call"></ion-icon>
+        <ion-label>Call</ion-label>
+      </ion-button>
+    </ion-fab>
+
+</ion-content>

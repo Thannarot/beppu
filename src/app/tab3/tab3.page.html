@@ -1,6 +1,10 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>List of Shelter</ion-title>
+    <ion-select  slot="end" padding [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+      <ion-select-option value="en">{{ 'English' | translate }}</ion-select-option>
+      <ion-select-option value="jp">{{ 'Japanese' | translate }}</ion-select-option>
+    </ion-select>
+    <ion-title>{{ 'SHELTER.Shelter' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>

@@ -5,6 +5,7 @@ import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import * as L from 'leaflet';
 import { ModalController } from '@ionic/angular';
 import { AppservicesService } from '../services/appservices.service';
+import { TranslateConfigService } from '../translate-config.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -22,8 +23,14 @@ export class Tab1Page {
 //     zoom: 15,
 //     center: L.latLng(33.269184, 131.509363)
 //   };
-  constructor(private http: HttpClient, private modalCtrl: ModalController, public myService: AppservicesService) { }
+  selectedLanguage:string;
+  constructor(private http: HttpClient, private modalCtrl: ModalController, public myService: AppservicesService, private translateConfigService: TranslateConfigService){
+    this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
+  }
 
+  languageChanged(){
+    this.translateConfigService.setLanguage(this.selectedLanguage);
+  }
 //
 //   onMapReady() {
 //     var markerIcon = new L.Icon({
@@ -196,37 +203,37 @@ map: Map;
                iconUrl: 'assets/icon/your-location.png'
               });
         L.marker([33.273073, 131.505804], {icon: yourLocationIcon}).addTo(this.map).bindPopup("Your Location");
-        
-        this.http.get("https://bepputool.adpc.net/api/building/read.php").subscribe((json: any) => {
-          console.log(json);
-          this.json = json;
-          L.geoJSON(this.json,{
-            style: function (feature) {
-                  return {
-                    'weight': 0.5,
-                    'color': 'red',
-                    'fillOpacity': 0
-                  }
-                },
-          }).addTo(this.map);
-        });
 
-        this.http.get("https://bepputool.adpc.net/api/mashi/read.php").subscribe((json: any) => {
-          console.log(json);
-          this.json = json;
-          L.geoJSON(this.json,{
-            style: function (feature) {
-            return {
-              'weight': 0.7,
-              'color': 'blue',
-              'dashArray': '10, 10',
-              'dashOffset': '20',
-              'fillColor' : 'lightskyblue',
-              'fillOpacity': 0.2
-            }
-          },
-        }).addTo(this.map);
-        });
+        // this.http.get("https://bepputool.adpc.net/api/building/read.php").subscribe((json: any) => {
+        //   console.log(json);
+        //   this.json = json;
+        //   L.geoJSON(this.json,{
+        //     style: function (feature) {
+        //           return {
+        //             'weight': 0.5,
+        //             'color': 'red',
+        //             'fillOpacity': 0
+        //           }
+        //         },
+        //   }).addTo(this.map);
+        // });
+        //
+        // this.http.get("https://bepputool.adpc.net/api/mashi/read.php").subscribe((json: any) => {
+        //   console.log(json);
+        //   this.json = json;
+        //   L.geoJSON(this.json,{
+        //     style: function (feature) {
+        //     return {
+        //       'weight': 0.7,
+        //       'color': 'blue',
+        //       'dashArray': '10, 10',
+        //       'dashOffset': '20',
+        //       'fillColor' : 'lightskyblue',
+        //       'fillOpacity': 0.2
+        //     }
+        //   },
+        // }).addTo(this.map);
+        // });
   }
 
   /** Remove map when we have multiple map object */

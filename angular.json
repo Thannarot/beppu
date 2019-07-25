@@ -35,6 +35,11 @@
                 "input": "./node_modules/leaflet/dist/images",
                 "output": "leaflet/"
               },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/flag-icon-css/flags",
+                "output": "flags/"
+              },
               "src/assets"
             ],
             "styles": [
@@ -49,7 +54,8 @@
               },
               {
                  "input": "./node_modules/leaflet/dist/leaflet.css"
-              }
+              },
+              "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

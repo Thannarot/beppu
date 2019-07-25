@@ -44,6 +44,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'myaccount',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab5/tab5.module#Tab5PageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/map',
         pathMatch: 'full'

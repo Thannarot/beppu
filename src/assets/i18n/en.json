@@ -1,0 +1,28 @@
+{
+    "English": "English",
+    "Japan": "Japan",
+    "HOME": {
+      "Home": "Home",
+      "Beppu": "Beppu",
+      "PWD Emergency Support System": "PWD Emergency Support System",
+      "PWD Emergancy Support Tool": "PWD Emergancy Support Tool",
+      "Flood Preparedness in Beppu city": "Flood Preparedness in Beppu city",
+      "Login": "Login",
+      "Register": "Register"
+    },
+    "MAP": {
+      "Map Viewer": "Map Viewer",
+      "Map": "Map",
+      "Your Location": "Your Location"
+    },
+    "NOTIFY": {
+      "Notify": "Notify"
+
+    },
+    "SHELTER": {
+      "Shelter": "Shelter"
+    },
+    "ACCOUNT": {
+      "Account": "Account"
+    }
+}

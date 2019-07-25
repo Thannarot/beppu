@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <ion-select slot="end" padding>
+      <ion-select-option value="en">
+        <span class="flag-icon flag-icon-ru"></span>
+        Eng
+      </ion-select-option>
+      <ion-select-option value="jp">
+        Jap
+      </ion-select-option>
+    </ion-select> -->
+
+      <ion-select  slot="end" padding [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+        <ion-select-option value="en">{{ 'English' | translate }}</ion-select-option>
+        <ion-select-option value="jp">{{ 'Japanese' | translate }}</ion-select-option>
+      </ion-select>
+
+<!-- <span class="flag-icon flag-icon-ru"></span> -->
+    <ion-title>{{ 'ACCOUNT.Account' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="https://i.stack.imgur.com/l60Hf.png">
+      </ion-thumbnail>
+      <ion-label><h1>Name Surname </h1></ion-label>
+      <ion-button color="secondary" expand="block" [routerLink]="['/']">Logout</ion-button>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Profile
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Disability Type:</ion-label>
+        <ion-label text-wrap slot="end" color="primary">Moving</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Gender:</ion-label>
+        <ion-label text-wrap slot="end" color="primary">Male</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Age</ion-label>
+        <ion-label text-wrap slot="end" color="primary">65</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Email: </ion-label>
+        <ion-label text-wrap slot="end" color="primary">your_accont@mail.com</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Tel: </ion-label>
+        <ion-label text-wrap slot="end" color="primary">0642578945</ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          List
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-text color="primary">
+            <h3>Request help</h3>
+          </ion-text>
+              @2019-08-01 19:45
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-text color="primary">
+            <h3>Request help</h3>
+          </ion-text>
+            @2019-07-25 10:55
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-text color="primary">
+            <h3>Request help</h3>
+          </ion-text>
+            @2019-07-01 09:55
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+</ion-content>

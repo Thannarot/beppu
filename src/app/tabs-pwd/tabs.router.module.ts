@@ -33,7 +33,16 @@ const routes: Routes = [
             loadChildren: '../tab4/tab4.module#Tab4PageModule'
           }
         ]
-      }
+      },
+      {
+        path: 'myaccount',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pwd-account/pwd-account.module#PwdAccountPageModule'
+          }
+        ]
+      },
     ]
   },
   {
