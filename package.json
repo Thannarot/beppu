@@ -33,6 +33,7 @@
     "flag-icon-css": "^3.3.0",
     "leaflet": "^1.5.1",
     "leaflet-providers": "^1.8.0",
+    "leaflet-routing-machine": "^3.2.12",
     "rxjs": "~6.5.1",
     "save": "^2.4.0",
     "tslib": "^1.9.0",

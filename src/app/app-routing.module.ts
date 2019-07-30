@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'user-auth', loadChildren: './auth/user-auth/user-auth.module#UserAuthPageModule' },
   { path: 'request-view', loadChildren: './pwd-viewer/request-view/request-view.module#RequestViewPageModule' },
   { path: 'tab5', loadChildren: './tab5/tab5.module#Tab5PageModule' },
-  { path: 'pwd-account', loadChildren: './pwd-account/pwd-account.module#PwdAccountPageModule' }
+  { path: 'pwd-account', loadChildren: './pwd-account/pwd-account.module#PwdAccountPageModule' },
+  { path: 'tracking', loadChildren: './tracking/tracking.module#TrackingPageModule' },
+  { path: 'tracking-pwdviwe', loadChildren: './tracking-pwdviwe/tracking-pwdviwe.module#TrackingPwdviwePageModule' }
 ];
 @NgModule({
   imports: [

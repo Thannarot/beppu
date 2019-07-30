@@ -87,7 +87,7 @@ export class RequestViewPage {
     async presentAlertConfirm() {
      const alert = await this.alertController.create({
        header: 'We found a volunteer for you.',
-       message: 'Mr. Justin B.',
+       message: 'Mr. Justin B.<br> <img src="https://i.stack.imgur.com/l60Hf.png">',
        buttons: [
          {
            text: 'Cancel',
@@ -99,18 +99,10 @@ export class RequestViewPage {
          }, {
            text: 'Accept',
            handler: () => {
-             console.log('Cancel');
-             var volunteerLocationIcon = new L.Icon({
-                    iconSize: [25, 25],
-                    iconAnchor: [12, 35],
-                    shadowSize: [50, 25],
-                    shadowAnchor: [12, 35],
-                    popupAnchor: [6, -30],
-                    iconUrl: 'assets/icon/volunteer.png'
-                   });
-             L.marker([33.271692, 131.506094], {icon: volunteerLocationIcon}).addTo(this.map).bindPopup("Volunteer");
-             var element = <HTMLInputElement> document.getElementById("request-btn");
-              element.hidden = true;
+             this.router.navigate(['/tracking-pwdviwe']);
+             // L.marker([33.271692, 131.506094], {icon: volunteerLocationIcon}).addTo(this.map).bindPopup("Volunteer");
+             // var element = <HTMLInputElement> document.getElementById("request-btn");
+             //  element.hidden = true;
            }
          }
        ]

@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { TrackingPage } from './tracking.page';
 import { PwdToolkitPageModule } from '../pwd-toolkit/pwd-toolkit.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { TrackingPwdviwePage } from './tracking-pwdviwe.page';
+
 @NgModule({
   imports: [
     PwdToolkitPageModule,
@@ -15,10 +16,8 @@ import { TranslateModule } from '@ngx-translate/core';
     LeafletModule,
     HttpClientModule,
     TranslateModule.forChild(),
-    RouterModule.forChild([{ path: '', component: TrackingPage }])
+    RouterModule.forChild([{ path: '', component: TrackingPwdviwePage }])
   ],
-  declarations: [TrackingPage],
-  entryComponents: [],
-  exports: []
+  declarations: [TrackingPwdviwePage]
 })
-export class TrackingPageModule {}
+export class TrackingPwdviwePageModule {}

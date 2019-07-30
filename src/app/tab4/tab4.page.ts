@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { TrackingPage } from '../tracking/tracking.page';
 import { TranslateConfigService } from '../translate-config.service';
 @Component({
   selector: 'app-tab4',
@@ -16,16 +15,6 @@ export class Tab4Page {
   languageChanged(){
     this.translateConfigService.setLanguage(this.selectedLanguage);
   }
-
- async presentModal() {
-   const modal = await this.modalCtrl.create({
-     component: TrackingPage,
-     componentProps: {
-       data: "Thannarot K."
-     }
-   });
-   return await modal.present();
- }
 
 
 }

@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div id="map" style="width: 100%; height: 100%"></div>
+  <div id="map3" style="width: 100%; height: 100%"></div>
   <!-- fab placed to the top start -->
   <!-- fab placed to the bottom start -->
   <ion-fab horizontal="start" vertical="bottom" slot="fixed">
@@ -19,9 +19,6 @@
         <ion-label>Call</ion-label>
       </ion-button>
 
-      <ion-button color="dark" (click)="showRoutingHeading2PWD();">
-        <ion-label>{{btn_txt}}</ion-label>
-      </ion-button>
     </ion-fab>
 
     <!-- <ion-fab horizontal="center" vertical="bottom" slot="fixed">
@@ -31,11 +28,10 @@
     </ion-fab> -->
 
 
-    <!-- <ion-fab horizontal="start" vertical="bottom" slot="fixed">
-      <ion-button color="light">
-        <ion-icon name="call"></ion-icon>
-        <ion-label>Call</ion-label>
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+      <ion-button color="dark" (click)="cancelEvent();">
+        <ion-label>CANCEL</ion-label>
       </ion-button>
-    </ion-fab> -->
+    </ion-fab>
 
 </ion-content>

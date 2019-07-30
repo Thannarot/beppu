@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 // import * as L from "leaflet";
 import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import * as L from 'leaflet';
+import 'leaflet-routing-machine';
 import { ModalController } from '@ionic/angular';
 import { AppservicesService } from '../services/appservices.service';
 import { TranslateConfigService } from '../translate-config.service';
@@ -132,6 +133,7 @@ map: Map;
     tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'edupala.com © ionic LeafLet',
     }).addTo(this.map);
+
 
     var markerIcon = new L.Icon({
            iconSize: [25, 25],

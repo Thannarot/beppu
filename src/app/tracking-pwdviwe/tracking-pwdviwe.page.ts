@@ -8,13 +8,12 @@ import 'leaflet-routing-machine';
 import { ModalController } from '@ionic/angular';
 import { PwdToolkitPage } from '../pwd-toolkit/pwd-toolkit.page';
 declare let L;
-
 @Component({
-  selector: 'app-tracking',
-  templateUrl: './tracking.page.html',
-  styleUrls: ['./tracking.page.scss'],
+  selector: 'app-tracking-pwdviwe',
+  templateUrl: './tracking-pwdviwe.page.html',
+  styleUrls: ['./tracking-pwdviwe.page.scss'],
 })
-export class TrackingPage {
+export class TrackingPwdviwePage {
   json;
   constructor(private http: HttpClient, private modalCtrl: ModalController, private router : Router) {}
 
@@ -35,7 +34,7 @@ export class TrackingPage {
 
     leafletMap() {
       // In setView add latLng and zoom
-      this.map = new Map('map').setView([33.273073, 131.505804], 16);
+      this.map = new Map('map3').setView([33.273073, 131.505804], 16);
       tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'edupala.com © ionic LeafLet',
       }).addTo(this.map);
@@ -67,8 +66,8 @@ export class TrackingPage {
              iconUrl: 'assets/icon/your-location.png'
             });
           L.marker([33.27083, 131.50271], {icon: shelterIcon}).addTo(this.map).bindPopup("Shelter");
-          L.marker([33.273073, 131.505804], {icon: currentIcon}).addTo(this.map).bindPopup("Your Location");
-          L.marker([33.271073, 131.506804], {icon: yourLocationIcon}).addTo(this.map).bindPopup("Mr. Smith Yagoshi").openPopup();
+          L.marker([33.273073, 131.505804], {icon: yourLocationIcon}).addTo(this.map).bindPopup("Mr.Justin B").openPopup();
+          L.marker([33.271073, 131.506804], {icon: currentIcon}).addTo(this.map).bindPopup("Your Location");
 
     }
 
@@ -77,40 +76,9 @@ export class TrackingPage {
       this.map.remove();
     }
 
-    btn_txt = 'PICK UP';
-    showRoutingHeading2PWD() {
-      if (this.btn_txt == 'PICK UP') {
-      this.controlRoute = L.Routing.control({
-            waypoints: [
-                L.latLng(33.273073, 131.505804),
-                L.latLng(33.271073, 131.506804)
-            ],
-            lineOptions: {
-               styles: [{color: 'red', opacity: 1, weight: 3}]
-            },
-            routeWhileDragging: false
-        }).addTo(this.map);
-          this.btn_txt = 'GO TO SHELTER';
-       }
-       else if (this.btn_txt == 'GO TO SHELTER') {
-         this.btn_txt = 'MISSION COMPLETE';
-         this.map.removeControl(this.controlRoute);
-         this.controlRoute = L.Routing.control({
-             waypoints: [
-                 L.latLng(33.271073, 131.506804),
-                 L.latLng(33.27083, 131.50271)
-             ],
-             lineOptions: {
-                styles: [{color: 'blue', opacity: 1, weight: 3}]
-             },
-             routeWhileDragging: false
-         }).addTo(this.map);
-       }
-       else{
-         this.map.removeControl(this.controlRoute);
+    cancelEvent() {
          this.ionViewWillLeave();
-         this.router.navigate(['/tabs/map']);
-       }
+         this.router.navigate(['/pwd-view/tabs/pwd-view']);
     }
 
 }
