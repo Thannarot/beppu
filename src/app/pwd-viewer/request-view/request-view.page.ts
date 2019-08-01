@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { NavController } from "@ionic/angular";
 import { Router } from '@angular/router';
+import { TranslateConfigService } from '../../translate-config.service';
 @Component({
   selector: 'app-request-view',
   templateUrl: './request-view.page.html',
@@ -13,10 +14,16 @@ import { Router } from '@angular/router';
 })
 export class RequestViewPage {
 
-  constructor(private http: HttpClient, private modalCtrl: ModalController, public alertController: AlertController, private router: Router, public navCtrl: NavController) { }
-
   json;
   map: Map;
+  selectedLanguage:string;
+  constructor(private http: HttpClient, private modalCtrl: ModalController, public alertController: AlertController, private router: Router, public navCtrl: NavController, private translateConfigService: TranslateConfigService) {
+  this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
+ }
+
+  languageChanged(){
+    this.translateConfigService.setLanguage(this.selectedLanguage);
+  }
 
     ionViewDidEnter() { this.leafletMap(); }
 

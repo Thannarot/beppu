@@ -6,7 +6,7 @@ import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import 'leaflet';
 import 'leaflet-routing-machine';
 import { ModalController } from '@ionic/angular';
-import { PwdToolkitPage } from '../pwd-toolkit/pwd-toolkit.page';
+import { VolunteerInfoPage } from '../volunteer-info/volunteer-info.page';
 declare let L;
 @Component({
   selector: 'app-tracking-pwdviwe',
@@ -17,9 +17,9 @@ export class TrackingPwdviwePage {
   json;
   constructor(private http: HttpClient, private modalCtrl: ModalController, private router : Router) {}
 
-  async showToolKit() {
+  async showVolunteerInfo() {
     const modal = await this.modalCtrl.create({
-      component: PwdToolkitPage,
+      component: VolunteerInfoPage,
       componentProps: {
         data: "Mr. Smith Yagoshi"
       }

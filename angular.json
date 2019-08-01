@@ -55,7 +55,8 @@
               {
                  "input": "./node_modules/leaflet/dist/leaflet.css"
               },
-              "node_modules/flag-icon-css/css/flag-icon.min.css"
+              "node_modules/flag-icon-css/css/flag-icon.min.css",
+              "node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { PwdToolkitPageModule } from '../pwd-toolkit/pwd-toolkit.module';
+import { VolunteerInfoPageModule } from '../volunteer-info/volunteer-info.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { TrackingPwdviwePage } from './tracking-pwdviwe.page';
 
 @NgModule({
   imports: [
-    PwdToolkitPageModule,
+    VolunteerInfoPageModule,
     CommonModule,
     IonicModule,
     LeafletModule,

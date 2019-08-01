@@ -7,11 +7,15 @@
 
     <ion-card-content>
       <img src="./assets/img/Disability-Animation.png" />
-      {{ 'HOME.PWD Emergency Support System' | translate }} {{ 'HOME.Flood Preparedness in Beppu city' | translate }}<br>
+      <!-- {{ 'HOME.PWD Emergency Support System' | translate }} {{ 'HOME.Flood Preparedness in Beppu city' | translate }}<br> -->
+      If you already have an account, Please Login
       <ion-button fill="outline" expand="block" [routerLink]="['/login']">{{ 'HOME.Login' | translate }}</ion-button>
       <ion-button expand="block" [routerLink]="['/user-auth']">{{ 'HOME.Register' | translate }}</ion-button>
       <ion-list>
         <ion-item>
+          <ion-label>
+            Language
+            </ion-label>
           <ion-select  slot="end" padding [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
             <ion-select-option value="en">{{ 'English' | translate }}</ion-select-option>
             <ion-select-option value="jp">{{ 'Japanese' | translate }}</ion-select-option>

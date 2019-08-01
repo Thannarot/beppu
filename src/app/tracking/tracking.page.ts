@@ -78,7 +78,33 @@ export class TrackingPage {
     }
 
     btn_txt = 'PICK UP';
-    showRoutingHeading2PWD() {
+    btn_color = "dark";
+    showRoutingHeading2PWD() {var currentIcon = new L.Icon({
+           iconSize: [25, 25],
+           iconAnchor: [12, 35],
+           shadowSize: [50, 25],
+           shadowAnchor: [12, 35],
+           popupAnchor: [6, -30],
+           iconUrl: 'assets/icon/current-location.png',
+          });
+
+    var shelterIcon = new L.Icon({
+           iconSize: [25, 25],
+           iconAnchor: [12, 35],
+           shadowSize: [50, 25],
+           shadowAnchor: [12, 35],
+           popupAnchor: [6, -30],
+           iconUrl: 'assets/icon/green-marker.png'
+          });
+
+    var yourLocationIcon = new L.Icon({
+           iconSize: [25, 25],
+           iconAnchor: [12, 35],
+           shadowSize: [50, 25],
+           shadowAnchor: [12, 35],
+           popupAnchor: [6, -30],
+           iconUrl: 'assets/icon/your-location.png'
+          });
       if (this.btn_txt == 'PICK UP') {
       this.controlRoute = L.Routing.control({
             waypoints: [
@@ -88,12 +114,20 @@ export class TrackingPage {
             lineOptions: {
                styles: [{color: 'red', opacity: 1, weight: 3}]
             },
-            routeWhileDragging: false
+            routeWhileDragging: false,
+             createMarker:function(i, wp, nWps){
+             if (i === 0) {
+             return L.marker(wp.latLng, {icon: currentIcon });
+             }else{
+             return L.marker(wp.latLng, {icon: yourLocationIcon });
+           }
+         }
         }).addTo(this.map);
           this.btn_txt = 'GO TO SHELTER';
        }
        else if (this.btn_txt == 'GO TO SHELTER') {
-         this.btn_txt = 'MISSION COMPLETE';
+         this.btn_txt = 'DONE';
+         this.btn_color = 'success';
          this.map.removeControl(this.controlRoute);
          this.controlRoute = L.Routing.control({
              waypoints: [
@@ -103,7 +137,15 @@ export class TrackingPage {
              lineOptions: {
                 styles: [{color: 'blue', opacity: 1, weight: 3}]
              },
-             routeWhileDragging: false
+             routeWhileDragging: false,
+             show: false,
+              createMarker:function(i, wp, nWps){
+              if (i === 0) {
+              return L.marker(wp.latLng, {icon: yourLocationIcon });
+              }else{
+              return L.marker(wp.latLng, {icon: shelterIcon });
+            }
+          }
          }).addTo(this.map);
        }
        else{
