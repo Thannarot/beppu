@@ -81,15 +81,15 @@ export class RequestViewPage {
             }).addTo(this.map);
           });
 
-          var yourLocationIcon = new L.Icon({
+          var currentIcon = new L.Icon({
                  iconSize: [25, 25],
                  iconAnchor: [12, 35],
                  shadowSize: [50, 25],
                  shadowAnchor: [12, 35],
                  popupAnchor: [6, -30],
-                 iconUrl: 'assets/icon/your-location.png'
+                 iconUrl: 'assets/icon/current-location.png',
                 });
-          L.marker([33.273073, 131.505804], {icon: yourLocationIcon}).addTo(this.map).bindPopup("Your Location");
+          L.marker([33.273073, 131.505804], {icon: currentIcon}).addTo(this.map).bindPopup("Your Location");
     }
     async presentAlertConfirm() {
      const alert = await this.alertController.create({
