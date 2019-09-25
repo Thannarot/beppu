@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { NavController } from "@ionic/angular";
 import { Router } from '@angular/router';
+import { ShelterModelPage } from '../../shelter-model/shelter-model.page';
 import { TranslateConfigService } from '../../translate-config.service';
 @Component({
   selector: 'app-request-view',
@@ -24,15 +25,41 @@ export class RequestViewPage {
   languageChanged(){
     this.translateConfigService.setLanguage(this.selectedLanguage);
   }
+  async presentModalShelter() {
+    const modal = await this.modalCtrl.create({
+      component: ShelterModelPage,
+      componentProps: {
+        data: "Thannarot K."
+      }
+    });
+    return await modal.present();
+  }
 
     ionViewDidEnter() { this.leafletMap(); }
 
     leafletMap() {
       // In setView add latLng and zoom
-      this.map = new Map('map-request').setView([33.273073, 131.505804], 16);
-      tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'edupala.com © ionic LeafLet',
-      }).addTo(this.map);
+      var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+      var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 25,
+        minZoom: 5,
+        subdomains:['mt0','mt1','mt2','mt3']
+      });
+      var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr,minZoom: 5, maxZoom:25}),
+      streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr,minZoom: 5, maxZoom:25});
+      var baseMaps = {
+        "Grayscale": grayscale,
+        "Streets": streets,
+        "Satellite": googleSat
+      };
+      this.map = new Map('mapId').setView([33.273184, 131.509363], 16);
+      grayscale.addTo(this.map);
+
+      var control = new L.Control.Layers().addTo(this.map);
+      control.setPosition('topright');
 
       var markerIcon = new L.Icon({
              iconSize: [25, 25],
@@ -51,7 +78,7 @@ export class RequestViewPage {
              shadowSize: [50, 25],
              shadowAnchor: [12, 35],
              popupAnchor: [6, -30],
-             iconUrl: 'assets/icon/green-marker.png'
+             iconUrl: 'assets/icon/house-people.png'
             });
 
       var pwdIcon = new L.Icon({
@@ -62,24 +89,29 @@ export class RequestViewPage {
              popupAnchor: [6, -30],
              iconUrl: 'assets/icon/person.png'
             });
-      this.http.get("https://bepputool.adpc.net/api/shelter/read.php").subscribe((json: any) => {
-            console.log(json);
+      this.http.get("http://bepputool.adpc.net/api/shelter/read.php").subscribe((json: any) => {
             this.json = json;
-            L.geoJSON(this.json,{
+            var shelter_layer = L.geoJSON(this.json,{
               pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: shelterIcon});
               },
               onEachFeature: function (feature, layer) {
-                layer.on({
-                  'click': function (e) {
+                  layer.on({
+                    'click': function (e) {
+                         document.getElementById('modalShelterBtn').click();
+                        }
 
-                      }
-
-                });
+                  });
                 layer.bindPopup('Shelter name: ' + feature.properties.name);
               }
             }).addTo(this.map);
+            control.addOverlay(shelter_layer,'Shelter');
           });
+
+          var imageUrl = 'assets/img/flood.png',
+              imageBounds = [[33.2687500007805, 131.50425], [33.2747916674473, 131.511564444445]];
+          var flood_img = new L.imageOverlay(imageUrl, imageBounds).addTo(this.map);
+          control.addOverlay(flood_img,'Flooded Area');
 
           var currentIcon = new L.Icon({
                  iconSize: [25, 25],
@@ -87,7 +119,7 @@ export class RequestViewPage {
                  shadowSize: [50, 25],
                  shadowAnchor: [12, 35],
                  popupAnchor: [6, -30],
-                 iconUrl: 'assets/icon/current-location.png',
+                 iconUrl: 'assets/icon/favicon.png',
                 });
           L.marker([33.273073, 131.505804], {icon: currentIcon}).addTo(this.map).bindPopup("Your Location");
     }

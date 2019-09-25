@@ -6,10 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FormsModule } from '@angular/forms';
 import { RequestViewPage } from './request-view.page';
+import { ShelterModelPageModule } from '../../shelter-model/shelter-model.module';
 import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     IonicModule,
+    ShelterModelPageModule,
     CommonModule,
     FormsModule,
     LeafletModule,

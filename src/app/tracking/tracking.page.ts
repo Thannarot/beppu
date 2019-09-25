@@ -46,7 +46,7 @@ export class TrackingPage {
              shadowSize: [50, 25],
              shadowAnchor: [12, 35],
              popupAnchor: [6, -30],
-             iconUrl: 'assets/icon/current-location.png',
+             iconUrl: 'assets/icon/favicon.png',
             });
 
       var shelterIcon = new L.Icon({
@@ -55,10 +55,10 @@ export class TrackingPage {
              shadowSize: [50, 25],
              shadowAnchor: [12, 35],
              popupAnchor: [6, -30],
-             iconUrl: 'assets/icon/green-marker.png'
+             iconUrl: 'assets/icon/house-people.png'
             });
 
-      var yourLocationIcon = new L.Icon({
+      var pwdLocationIcon = new L.Icon({
              iconSize: [25, 25],
              iconAnchor: [12, 35],
              shadowSize: [50, 25],
@@ -68,7 +68,7 @@ export class TrackingPage {
             });
           L.marker([33.27083, 131.50271], {icon: shelterIcon}).addTo(this.map).bindPopup("Shelter");
           L.marker([33.273073, 131.505804], {icon: currentIcon}).addTo(this.map).bindPopup("Your Location");
-          L.marker([33.271073, 131.506804], {icon: yourLocationIcon}).addTo(this.map).bindPopup("Mr. Smith Yagoshi").openPopup();
+          L.marker([33.271073, 131.506804], {icon: pwdLocationIcon}).addTo(this.map).bindPopup("Mr. Smith Yagoshi").openPopup();
 
     }
 
@@ -85,7 +85,7 @@ export class TrackingPage {
            shadowSize: [50, 25],
            shadowAnchor: [12, 35],
            popupAnchor: [6, -30],
-           iconUrl: 'assets/icon/current-location.png',
+           iconUrl: 'assets/icon/favicon.png',
           });
 
     var shelterIcon = new L.Icon({
@@ -94,7 +94,7 @@ export class TrackingPage {
            shadowSize: [50, 25],
            shadowAnchor: [12, 35],
            popupAnchor: [6, -30],
-           iconUrl: 'assets/icon/green-marker.png'
+           iconUrl: 'assets/icon/house-people.png'
           });
 
     var yourLocationIcon = new L.Icon({

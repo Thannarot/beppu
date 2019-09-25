@@ -5,26 +5,19 @@ import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import * as L from 'leaflet';
 import 'leaflet-routing-machine';
 import { ModalController } from '@ionic/angular';
+import { PwdModelPage } from '../pwd-model/pwd-model.page';
 import { ShelterModelPage } from '../shelter-model/shelter-model.page';
 import { AppservicesService } from '../services/appservices.service';
 import { TranslateConfigService } from '../translate-config.service';
+
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.css']
+  selector: 'app-government-viewer',
+  templateUrl: './government-viewer.page.html',
+  styleUrls: ['./government-viewer.page.css'],
 })
-export class Tab1Page {
-//     public map: L.Map;
+export class GovernmentViewerPage {
     json;
-//     options = {
-//     layers: [
-//       L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//         attribution: ""
-//       })
-//     ],
-//     zoom: 15,
-//     center: L.latLng(33.269184, 131.509363)
-//   };
+
   selectedLanguage:string;
   constructor(private http: HttpClient, public modalCtrl: ModalController, public myService: AppservicesService, private translateConfigService: TranslateConfigService){
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
@@ -33,106 +26,25 @@ export class Tab1Page {
   languageChanged(){
     this.translateConfigService.setLanguage(this.selectedLanguage);
   }
-  async presentModalShelter() {
+  async presentModalPwd() {
     const modal = await this.modalCtrl.create({
-      component: ShelterModelPage,
+      component: PwdModelPage,
       componentProps: {
         data: "Finn"
       }
     });
     return await modal.present();
   }
-//
-//   onMapReady() {
-//     var markerIcon = new L.Icon({
-//        iconSize: [25, 25],
-//        iconAnchor: [12, 35],
-//        shadowSize: [50, 25],
-// 	     shadowAnchor: [12, 35],
-//        popupAnchor: [6, -30],
-//        iconUrl: 'leaflet/marker-icon.png',
-//        iconRetinaUrl: 'leaflet/marker-icon-2x.png',
-//        shadowUrl: 'leaflet/marker-shadow.png'
-//       });
-//
-//     setTimeout(() => {
-//       this.map.invalidateSize();
-//     }, 1000);
-//
-//     this.http.get("https://bepputool.adpc.net/api/shelter/read.php").subscribe((json: any) => {
-//       console.log(json);
-//       this.json = json;
-//       L.geoJSON(this.json,{
-//         pointToLayer: function(feature, latlng) {
-//           return L.marker(latlng, {icon: markerIcon});
-//         },
-//         onEachFeature: function (feature, layer) {
-//           layer.on({
-//             'click': function (e) {
-//                   this.myService.someFunction();
-//                 }
-//
-//           });
-//           layer.bindPopup('Shelter name: ' + feature.properties.name);
-//         }
-//       }).addTo(map);
-//     });
-//
-//     this.http.get("https://bepputool.adpc.net/api/pwd/read.php").subscribe((json: any) => {
-//       console.log(json);
-//       this.json = json;
-//       L.geoJSON(this.json,{
-//         pointToLayer: function(feature, latlng) {
-//           return L.marker(latlng, {icon: markerIcon});
-//         },
-//         onEachFeature: function (feature, layer) {
-//           // layer.on({
-//           //   'click': function (e) {
-//           //     this.ShelterModelPage.presentModal();
-//           //       }
-//           //
-//           // });
-//           layer.bindPopup('Person name: ' + feature.properties.name);
-//         }
-//       }).addTo(map);
-//     });
-//
-//     this.http.get("https://bepputool.adpc.net/api/building/read.php").subscribe((json: any) => {
-//       console.log(json);
-//       this.json = json;
-//       L.geoJSON(this.json,{
-//         style: function (feature) {
-//               return {
-//                 'weight': 0.5,
-//                 'color': 'red',
-//                 'fillOpacity': 0
-//               }
-//             },
-//       }).addTo(map);
-//     });
-//
-//     this.http.get("https://bepputool.adpc.net/api/mashi/read.php").subscribe((json: any) => {
-//       console.log(json);
-//       this.json = json;
-//       L.geoJSON(this.json,{
-//         style: function (feature) {
-//         return {
-//           'weight': 0.7,
-//           'color': 'blue',
-//           'dashArray': '10, 10',
-//           'dashOffset': '20',
-//           'fillColor' : 'lightskyblue',
-//           'fillOpacity': 0.2
-//         }
-//       },
-//     }).addTo(map);
-//     });
-//
-//   }
-//
-//
-// }
 
+  async presentModalShelter() {
+    const modal = await this.modalCtrl.create({
+      component: ShelterModelPage,
+      componentProps: {
+        data: "Thannarot K."
+      }
+    });
+    return await modal.present();
+  }
 map: Map;
 
   ionViewDidEnter() { this.leafletMap(); }
@@ -158,14 +70,14 @@ map: Map;
     this.map = new Map('mapId').setView([33.273184, 131.509363], 16);
     grayscale.addTo(this.map);
 
-    var control = new L.Control.Layers(baseMaps).addTo(this.map);
+    var control = new L.Control.Layers().addTo(this.map);
     control.setPosition('topright');
 
     var markerIcon = new L.Icon({
            iconSize: [25, 25],
            iconAnchor: [12, 35],
            shadowSize: [50, 25],
-    	     shadowAnchor: [12, 35],
+    	   shadowAnchor: [12, 35],
            popupAnchor: [6, -30],
            iconUrl: 'leaflet/marker-icon.png',
            iconRetinaUrl: 'leaflet/marker-icon-2x.png',
@@ -189,8 +101,8 @@ map: Map;
            popupAnchor: [6, -30],
            iconUrl: 'assets/icon/person.png'
           });
+
     this.http.get("http://bepputool.adpc.net/api/shelter/read.php").subscribe((json: any) => {
-          console.log(json);
           this.json = json;
           var shelter_layer = L.geoJSON(this.json,{
             pointToLayer: function(feature, latlng) {
@@ -210,19 +122,25 @@ map: Map;
         });
 
 
-        // this.http.get("https://bepputool.adpc.net/api/pwd/read.php").subscribe((json: any) => {
-        //   console.log(json);
-        //   this.json = json;
-        //   L.geoJSON(this.json,{
-        //     pointToLayer: function(feature, latlng) {
-        //       return L.marker(latlng, {icon: pwdIcon});
-        //     },
-        //     onEachFeature: function (feature, layer) {
-        //
-        //       layer.bindPopup('Person name: ' + feature.properties.name);
-        //     }
-        //   }).addTo(this.map);
-        // });
+        this.http.get("http://bepputool.adpc.net/api/pwd/read.php").subscribe((json: any) => {
+          console.log(json);
+          this.json = json;
+          var pwd_layer = L.geoJSON(this.json,{
+            pointToLayer: function(feature, latlng) {
+              return L.marker(latlng, {icon: pwdIcon});
+            },
+            onEachFeature: function (feature, layer) {
+                layer.on({
+                  'click': function (e) {
+                       document.getElementById('modalPwdBtn').click();
+                      }
+
+                });
+              layer.bindPopup('PWD name: ' + feature.properties.name);
+            }
+          }).addTo(this.map);
+          control.addOverlay(pwd_layer,'PWDs');
+        });
         var currentIcon = new L.Icon({
                iconSize: [25, 25],
                iconAnchor: [12, 35],
@@ -236,7 +154,6 @@ map: Map;
             imageBounds = [[33.2687500007805, 131.50425], [33.2747916674473, 131.511564444445]];
         var flood_img = new L.imageOverlay(imageUrl, imageBounds).addTo(this.map);
         control.addOverlay(flood_img,'Flooded Area');
-            //control.addOverlay(flood_img,'Flood Extent');
 
         // this.http.get("https://bepputool.adpc.net/api/building/read.php").subscribe((json: any) => {
         //   console.log(json);
@@ -252,6 +169,23 @@ map: Map;
         //   }).addTo(this.map);
         // });
         //
+        this.http.get("http://bepputool.adpc.net/api/mashi/read.php").subscribe((json: any) => {
+          console.log(json);
+          this.json = json;
+          var mashi_layer = L.geoJSON(this.json,{
+            style: function (feature) {
+            return {
+              'weight': 0.7,
+              'color': 'blue',
+              'dashArray': '10, 10',
+              'dashOffset': '20',
+              'fillColor' : 'lightskyblue',
+              'fillOpacity': 0.2
+            }
+          },
+        }).addTo(this.map);
+        control.addOverlay(mashi_layer,'Mashi');
+        });
 
   }
 

@@ -5,20 +5,23 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
+import { GovernmentViewerPage } from './government-viewer.page';
+import { PwdModelPageModule } from '../pwd-model/pwd-model.module';
 import { ShelterModelPageModule } from '../shelter-model/shelter-model.module';
 import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
-    IonicModule,
+    PwdModelPageModule,
     ShelterModelPageModule,
+    IonicModule,
     CommonModule,
     FormsModule,
     LeafletModule,
     HttpClientModule,
     TranslateModule.forChild(),
-    RouterModule.forChild([{ path: '', component: Tab1Page }])
+    RouterModule.forChild([{ path: '', component: GovernmentViewerPage }])
   ],
-  declarations: [Tab1Page]
+  declarations: [GovernmentViewerPage]
 })
-export class Tab1PageModule {}
+export class GovernmentViewerPageModule {}

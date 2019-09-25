@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-select  slot="end" padding [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+      <ion-select-option value="en">{{ 'English' | translate }}</ion-select-option>
+      <ion-select-option value="jp">{{ 'Japanese' | translate }}</ion-select-option>
+    </ion-select>
+    <ion-title>{{ 'ACCOUNT.Account' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="https://i.stack.imgur.com/l60Hf.png">
+      </ion-thumbnail>
+      <ion-label><h1>username</h1></ion-label>
+      <ion-button color="secondary" expand="block" [routerLink]="['/']">Logout</ion-button>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Profile
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Gender:</ion-label>
+        <ion-label text-wrap slot="end" color="primary">Male</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Age</ion-label>
+        <ion-label text-wrap slot="end" color="primary">27</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Email: </ion-label>
+        <ion-label text-wrap slot="end" color="primary">your_account@mail.com</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Tel: </ion-label>
+        <ion-label text-wrap slot="end" color="primary">0642578945</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Organization: </ion-label>
+        <ion-label text-wrap slot="end" color="primary">Beppu City Government</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>Position: </ion-label>
+        <ion-label text-wrap slot="end" color="primary">Monitor</ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Activities
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-text color="primary">
+            <h3>Finn.</h3>
+          </ion-text>
+              Helping Finn @2019-08-01 19:45
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-text color="primary">
+            <h3>Mr. Smith Yagoshi</h3>
+          </ion-text>
+            Helping Mr. Smith Yagoshi @2019-07-25 10:55
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-text color="primary">
+            <h3>Miss Yuki</h3>
+          </ion-text>
+            Helping Miss Yuki @2019-07-01 09:55
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+</ion-content>

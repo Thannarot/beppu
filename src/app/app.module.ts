@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -40,7 +41,7 @@ export function LanguageLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     TranslateConfigService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
