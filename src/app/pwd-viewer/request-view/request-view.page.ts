@@ -48,8 +48,14 @@ export class RequestViewPage {
         minZoom: 5,
         subdomains:['mt0','mt1','mt2','mt3']
       });
-      var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr,minZoom: 5, maxZoom:25}),
-      streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr,minZoom: 5, maxZoom:25});
+      interface Options {
+          id?: string;
+          attribution?: string;
+          minZoom?: number;
+          maxZoom?: number;
+      }
+      var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr,minZoom: 5, maxZoom:25} as Options),
+      streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr,minZoom: 5, maxZoom:25} as Options);
       var baseMaps = {
         "Grayscale": grayscale,
         "Streets": streets,
@@ -108,9 +114,10 @@ export class RequestViewPage {
             control.addOverlay(shelter_layer,'Shelter');
           });
 
-          var imageUrl = 'assets/img/flood.png',
+          let imageBounds: [number, number] | [[number, number], [number, number]];
+          var imageUrl = 'assets/img/flood.png';
               imageBounds = [[33.2687500007805, 131.50425], [33.2747916674473, 131.511564444445]];
-          var flood_img = new L.imageOverlay(imageUrl, imageBounds).addTo(this.map);
+          var flood_img =  L.imageOverlay(imageUrl, imageBounds).addTo(this.map);
           control.addOverlay(flood_img,'Flooded Area');
 
           var currentIcon = new L.Icon({
