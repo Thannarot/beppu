@@ -61,7 +61,7 @@ export class RequestViewPage {
         "Streets": streets,
         "Satellite": googleSat
       };
-      this.map = new Map('mapId').setView([33.273184, 131.509363], 16);
+      this.map = new Map('map-request').setView([33.273184, 131.509363], 16);
       grayscale.addTo(this.map);
 
       var control = new L.Control.Layers().addTo(this.map);
